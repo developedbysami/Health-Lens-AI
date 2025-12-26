@@ -96,13 +96,13 @@ const App = () => {
     } catch (error) {
       console.log('Error Encountered: ',error.message)
       toast.error(error.message)
-      reset()
+      handleReset()
     }finally{
       setIsLoading(false)
     }
   }
 
-  const reset = () =>{
+  const handleReset = () =>{
     setAnalysis("")
     setPresenceCheckList([])
     setReportText("")
@@ -114,9 +114,137 @@ const App = () => {
 
 
   return (
-    <main className='min-h-screen overflow-hidden bg-[url("/bg.png")] bg-cover bg-center bg-no-repeat'>
-     <input type="file" name="upload-file" id="upload-file" onChange={handleUpload} />
-    </main>
+   <main className='min-h-screen bg-linear-to-b from-[#D2D8DD] to-[#E9E0D7] flex items-center justify-center'>
+    <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
+    {/* HEADING  */}
+    <div className='text-center space-y-5'>
+      <h1 className='text-[#566679] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold'>AI Health Report Analyzer</h1>
+      <p className='text-[#7399CB] text-sm sm:text-base font-semibold'>Upload your PDF health report and get instant AI feedback</p>
+    </div>
+    {/* UPLOAD AREA & ALL CARDS  */}
+    <div className="max-w-xl mx-auto space-y-4 sm:space-y-6">
+      {/* UPLOAD AREA  */}
+      {
+        !uploadedFile && (
+    <div className="upload-area">
+    <div className="upload-zone">
+      <span className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl'>📄</span>
+      <div className='text-center'>
+      <h2 className='text-3xl text-[#566679] font-semibold'>Upload your Report</h2>
+      <span className='text-[#2f4c72] text-sm sm:text-base'>PDF files only • Get instant analysis</span>
+      </div>
+      <label htmlFor="upload-file" className={`btn-primary ${!isAiReady 
+        ? "opacity-50 cursor-not-allowed" : ""
+      }`}>Choose PDF File</label>
+      <input type="file" name="upload-file" id="upload-file" className='hidden' onChange={handleUpload} disabled={!isAiReady}/>
+    </div>
+  </div>
+        )
+      }
+
+  {
+    isLoading && (
+      <div className='space-y-4'>
+        <div className="loading-spinner"/>
+        <div className='text-center'>
+        <h3 className='text-lg sm:text-xl font-semibold'>Analyzing your Report</h3>
+        <span className='text-sm sm:text-base'>Please wait while AI reviews your report...</span>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    uploadedFile && analysis && (
+      <div className="file-info-card">
+        <div>
+          <div className='flex items-start gap-2'>
+          <div className="icon-container ">
+            <span className='text-2xl sm:text-4xl'>📄</span>
+          </div>
+          <div>
+          <h3 className='text-lg sm:text-xl text-white font-semibold'>Analysis Complete</h3>
+          <p className='text-white'>{uploadedFile?.name}</p>
+          </div>
+          </div>
+        </div>
+        <button className='btn-secondary' onClick={handleReset}>
+      New Analysis
+        </button>
+      </div>
+    )
+  }
+
+
+  {/* OVERAL HEALTH SCORE CARD  */}
+  
+  {
+    analysis && (
+      <div className="section-card group bg-linear-to-br from-[#D2D8DD] to-blue-300 space-y-4 text-center
+  flex flex-col items-center
+  ">
+    <div className='flex items-center justify-center'>
+      <span className='text-3xl'>🏆</span>
+      <p className='text-3xl text-white font-bold'>Overall Health Score</p>
+    </div>
+    <span className='text-blue-500 text-3xl sm:text-5xl lg:text-8xl font-bold'>
+      {
+        analysis.overallHealthScore ? analysis.overallHealthScore : "7" 
+      }
+    </span>
+    <div className={`
+      inline-flex gap-2 rounded-full px-4 py-2 
+      ${parseInt(analysis?.overallHealthScore) >= 8 ?
+        'health-status-excellent'
+        : parseInt(analysis?.overallHealthScore) >= 6 ?
+        'health-status-good' : 'health-status-improvement'
+      }
+      `}>
+        <span className='text-xl sm:text-2xl'>
+        {parseInt(analysis?.overallHealthScore) >= 8 ?
+        '🌟'
+        : parseInt(analysis?.overallHealthScore) >= 6 ?
+        '⭐' : '📉'
+      }
+        </span>
+        <span className='text-xl sm:text-2xl'>
+        {parseInt(analysis?.overallHealthScore) >= 8 ?
+        'Excellent'
+        : parseInt(analysis?.overallHealthScore) >= 6 ?
+        'Good' : 'Improvements Needed'
+      }
+        </span>
+    </div>
+    <div className="progress-bar">
+    <div className={`
+      w-full rounded-full h-full shadow-md transition-all duartion-1000 ease-out 
+      ${
+        parseInt(analysis?.overallHealthScore) >= 8 ?
+        'progress-excellent'
+        : parseInt(analysis?.overallHealthScore) >= 6 ?
+        'progress-good' : 'progress-improvement'     
+      }
+
+      `}
+      style={{
+        width: `${(parseInt(analysis?.overallHealthScore)) * 10}%`
+      }}
+      ></div>  
+    </div>
+  </div>
+
+
+
+)
+}
+{/* ALL CARDS INSIDE THIS DIV  */}
+    </div>
+    
+    
+
+      {/* Everything would remain under these 2 elements */}
+    </div>
+   </main>
   )
 }
 

@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+.upload-area{
+@apply p-4 sm:p-6 rounded-xl bg-linear-to-br from-[#3C8EDD] to-[#89C5EE] shadow-md
+}
+
+.upload-zone{
+@apply border-2 border-[#E2EBF0]/60 border-dashed p-4 sm:p-6 rounded-xl bg-white/30 backdrop-blur-lg flex items-center justify-center flex-col gap-4
+}
+
+.btn-primary{
+@apply bg-[#D1DADF]/40 backdrop-blur-md rounded-lg px-6 py-4 font-semibold shadow-md cursor-pointer text-[#2f4c72] hover:scale-105 hover:opacity-90 transition-all duration-300 text-lg
+}
+.btn-secondary{
+@apply bg-red-500/80 backdrop-blur-md rounded-lg p-4 font-semibold shadow-md cursor-pointer text-white hover:opacity-90 transition-all duration-300
+}
+
+.loading-spinner{
+@apply w-10 h-10 sm:w-15 sm:h-15 rounded-full border-[#2f4c72]/20 border-5 border-t-sky-600 mx-auto animate-spin transition-all duration-300
+}
+
+.file-info-card{
+@apply p-4 sm:p-6 bg-linear-to-r from-[#3C8EDD] to-[#89C5EE] rounded-xl flex items-center justify-between
+}
+
+.icon-container{
+@apply p-2 flex items-center justify-center rounded-xl
+bg-white/30
+}
+
+.section-card{
+@apply p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl 
+transition-all duration-300 shadow-blue-300/50 hover:scale-105 border-sky-200/50 border
+}
+
+.health-status-excellent{
+@apply bg-green-500/70 text-green-300 border border-green-500/30;
+
+}
+
+.progress-bar{
+@apply w-full h-5 bg-slate-300 rounded-full overflow-hidden border border-slate-600/10;
+}
+
+.progress-excellent {
+    @apply bg-gradient-to-r from-green-400 to-emerald-400;
+  }
+  
+  .progress-good {
+    @apply bg-gradient-to-r from-yellow-400 to-orange-400;
+  }
+  
+  .progress-improvement {
+    @apply bg-gradient-to-r from-red-400 to-pink-400;
+  }

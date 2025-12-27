@@ -1,55 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 @import "tailwindcss";
 
-.upload-area{
-@apply p-4 sm:p-6 rounded-xl bg-linear-to-br from-[#3C8EDD] to-[#89C5EE] shadow-md
+.upload-area {
+  @apply p-4 sm:p-6 rounded-xl bg-linear-to-br from-teal-500 to-emerald-500 shadow-md;
 }
 
-.upload-zone{
-@apply border-2 border-[#E2EBF0]/60 border-dashed p-4 sm:p-6 rounded-xl bg-white/30 backdrop-blur-lg flex items-center justify-center flex-col gap-4
+.upload-zone {
+  @apply border-2 border-white/40 border-dashed p-4 sm:p-6 rounded-xl bg-white/20 backdrop-blur-lg flex items-center justify-center flex-col gap-4;
 }
 
-.btn-primary{
-@apply bg-[#D1DADF]/40 backdrop-blur-md rounded-lg px-6 py-4 font-semibold shadow-md cursor-pointer text-[#2f4c72] hover:scale-105 hover:opacity-90 transition-all duration-300 text-lg
-}
-.btn-secondary{
-@apply bg-red-500/80 backdrop-blur-md rounded-lg p-4 font-semibold shadow-md cursor-pointer text-white hover:opacity-90 transition-all duration-300
+.btn-primary {
+  @apply bg-white rounded-lg px-6 py-4 font-bold shadow-md cursor-pointer text-teal-700 hover:scale-105 hover:bg-teal-50 transition-all duration-300 text-lg;
 }
 
-.loading-spinner{
-@apply w-10 h-10 sm:w-15 sm:h-15 rounded-full border-[#2f4c72]/20 border-5 border-t-sky-600 mx-auto animate-spin transition-all duration-300
+.btn-secondary {
+  @apply bg-rose-500/90 backdrop-blur-md rounded-lg p-4 font-semibold shadow-md cursor-pointer text-white hover:bg-rose-600 transition-all duration-300;
 }
 
-.file-info-card{
-@apply p-4 sm:p-6 bg-linear-to-r from-[#3C8EDD] to-[#89C5EE] rounded-xl flex items-center justify-between
+.loading-spinner {
+  @apply w-10 h-10 sm:w-15 sm:h-15 rounded-full border-teal-200 border-5 border-t-teal-600 mx-auto animate-spin transition-all duration-300;
 }
 
-.icon-container{
-@apply p-2 flex items-center justify-center rounded-xl
-bg-white/30
+.file-info-card {
+  @apply p-4 sm:p-6 bg-linear-to-r from-teal-500 to-emerald-500 rounded-xl shadow-md hover:shadow-xl transition-all duration-300;
 }
 
-.section-card{
-@apply p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl 
-transition-all duration-300 shadow-blue-300/50 hover:scale-105 border-sky-200/50 border
+.icon-container {
+  @apply p-2 flex items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm;
 }
 
-.health-status-excellent{
-@apply bg-green-500/70 text-green-300 border border-green-500/30;
-
+.icon-container-rounded {
+  @apply w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full;
 }
 
-.progress-bar{
-@apply w-full h-5 bg-slate-300 rounded-full overflow-hidden border border-slate-600/10;
+.section-card {
+  @apply p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105;
 }
 
+.green-card {
+  @apply bg-gradient-to-br from-emerald-600 to-emerald-800 text-white;
+}
+.orange-card {
+  @apply bg-gradient-to-br from-amber-500 to-orange-600 text-white;
+}
+
+/* Status Indicators */
+.health-status-excellent {
+  @apply bg-emerald-100 text-emerald-700 border border-emerald-200;
+}
+.health-status-good {
+  @apply bg-amber-100 text-amber-700 border border-amber-200;
+}
+.health-status-improvement {
+  @apply bg-rose-100 text-rose-700 border border-rose-200;
+}
+
+/* Progress Bars */
+.progress-bar {
+  @apply w-full h-5 bg-slate-200/50 rounded-full overflow-hidden border border-slate-100/20 backdrop-blur-sm;
+}
+.progress-bar-small {
+  @apply w-full h-4 bg-slate-900/20 rounded-full overflow-hidden;
+}
+
+/* Gradients for the score bars */
 .progress-excellent {
-    @apply bg-gradient-to-r from-green-400 to-emerald-400;
-  }
-  
-  .progress-good {
-    @apply bg-gradient-to-r from-yellow-400 to-orange-400;
-  }
-  
-  .progress-improvement {
-    @apply bg-gradient-to-r from-red-400 to-pink-400;
-  }
+  @apply bg-gradient-to-r from-emerald-300 to-green-400;
+}
+.progress-good {
+  @apply bg-gradient-to-r from-amber-300 to-orange-400;
+}
+.progress-improvement {
+  @apply bg-gradient-to-r from-rose-300 to-red-400;
+}

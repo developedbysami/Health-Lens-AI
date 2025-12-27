@@ -384,7 +384,7 @@ const App = () => {
                       key={i}
                       className="flex items-start gap-3 my-4 p-4 sm:p-5 rounded-xl bg-white/20 backdrop-blur-md mt-4 text-white border border-white/10"
                     >
-                      <span className="mt-1">•</span>
+                      <span>•</span>
                       <span className="font-medium">{suggestion}</span>
                     </div>
                   ))}

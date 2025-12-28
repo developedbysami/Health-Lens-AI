@@ -54,7 +54,7 @@ const App = () => {
   };
 
   const analyzeReport = async (text) => {
-    const prompt = constants.ANALYZE_HEALTH_REPORT_PROMPT.replace(
+    const prompt = constants?.ANALYZE_HEALTH_REPORT_PROMPT.replace(
       "{{DOCUMENT_TEXT}}",
       text
     );
